@@ -22,10 +22,10 @@ export default class Led extends Component {
       </View>
     )
   }
-  
+
 }
 
-const scale = 75
+const scale = 64
 const ledStyle = {
   width: scale * 5,
   height: scale,

@@ -35,7 +35,7 @@ export default class Button extends Component {
 
 }
 
-const scale = 75
+const scale = 64
 const buttonContainerStyle = {
   width: scale,
   height: scale,

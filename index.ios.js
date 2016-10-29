@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 
 import _ from 'lodash'
+_.mixin(require('lodash-inflection'))
 
 import NumberPad from './app/components/number_pad/number_pad'
 import Led from './app/components/led/led'
@@ -54,11 +55,12 @@ export default class lator extends Component {
 
   evaluateLedValue() {
     const ledValue = this.state.ledValue
-    const ledValueString = ledValue.join('')
-                                   .replace('π', 'Math.PI')
-                                   .replace('ANS', this.state.lastEvaluatedValue)
+    var ledValueString = ledValue.join('')
+    var ledValueString = _.gsub(ledValueString, 'π', 'Math.PI') || ledValueString
+    var ledValueString = _.gsub(ledValueString, 'ANS', this.state.lastEvaluatedValue) || ledValueString
     var result
     try {
+      console.log(ledValueString)
       result = String(eval(ledValueString))
     } catch(err) {
       result = 'Syntax Error'
